@@ -5,9 +5,10 @@ Includes nginx, fail2ban, watchtower, and portainer
 ## Setup
 
 - Check watchtower config, it's set to update everything at 4AM every day.
-- SSL DH params should be fetched from https://ssl-config.mozilla.org/ffdhe2048.txt
-- SSL DH params should be stored in [nginx/config](./nginx/config) folder as `dhparams.pem`
-- See [nginx/templates](./nginx/templates) for Docker site config templates
+- SSL DH params should stored in [nginx/config](./nginx/config) folder as `dhparams.pem`
+    - Can be fetched using `curl https://ssl-config.mozilla.org/ffdhe2048.txt > ./nginx/config/dhparams.pem` 
+    - Alternatively, generate your own - `openssl dhparam -out ./nginx/config/dhparams.pem 2048`
+- See [nginx/templates](./nginx/templates) for Docker site config templates (and also weechat)
     - Configs for individual sites should be in [nginx/sites](./nginx/sites) folder on nginx container startup
     - Config files can be named whatever they wish, but the included [nginx.conf](./nginx/nginx.conf) file only loads `*.conf`
 - Wildcard cert for nginx goes into [nginx/ssl](./nginx/ssl) folder.
