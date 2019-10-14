@@ -6,7 +6,7 @@ Includes nginx, fail2ban, watchtower, and portainer
 
 - Check watchtower config, it's set to update everything at 4AM every day.
 
-- SSL DH params should be fetched from https://ssl-config.mozilla.org/ffdhe2048.tx
+- SSL DH params should be fetched from https://ssl-config.mozilla.org/ffdhe2048.txt
 - SSL DH params should be stored in [nginx/config](./nginx/config) folder as `dhparams.pem`
 
 - See [template.conf](./nginx/sites/template.conf) for Docker site config example
