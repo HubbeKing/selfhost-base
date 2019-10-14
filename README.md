@@ -17,7 +17,7 @@ Relies on externally created `web` docker network - see [docker-compose.yml](./d
 Can be created using `docker network create web`
 All sites this backend should proxy to should be attached to the `web` network
 This can be done in several ways:
-    - setting `networks: default: name: 'web'` in a `docker-compose.yml` file at the top level
+    - setting `networks: default: name: 'web' external: true` in a `docker-compose.yml` file at the top level
     - setting `networks: - web` for each service in a `docker-compose.yml` file
     - Running the docker service using `docker run -d --network="web"` or similar
 
