@@ -3,8 +3,7 @@ fail2ban/db/fail2ban.sqlite3
 nginx/configs/dhparam.pem
 nginx/log/*.log
 nginx/log/*.log.*
-nginx/ssl/*.pem
 nginx/sites/*.conf
-!nginx/sites/template.conf
+nginx/ssl/*.pem
 portainer/*
 !portainer/.gitkeep
