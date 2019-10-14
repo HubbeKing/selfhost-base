@@ -4,6 +4,8 @@ Includes nginx, fail2ban, watchtower, and portainer
 
 ## Setup
 
+Check watchtower config, it's set to update everything at 4AM every day.
+
 SSL DH params should be fetched from https://ssl-config.mozilla.org/ffdhe2048.txt
 SSL DH params should be stored in [nginx/config](./nginx/config) folder as `dhparams.pem`
 
@@ -18,4 +20,14 @@ This can be done in several ways:
     - setting `networks: default: name: 'web'` in a `docker-compose.yml` file at the top level
     - setting `networks: - web` for each service in a `docker-compose.yml` file
     - Running the docker service using `docker run -d --network="web"` or similar
+
+
+## Usage
+
+- Create an .env file, for TZ env var and other handy things
+- Create docker network using `docker network create web`
+- Get things going with `docker-compose up -d`
+- Get some services up and attached to `web`
+- Create nginx configs for services using [template.conf](./nginx/sites/template.conf)
+- Restart nginx with `docker restart nginx`
 

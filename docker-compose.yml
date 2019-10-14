@@ -37,7 +37,7 @@ services:
     container_name: watchtower
     command: --cleanup --schedule "0 0 4 * * *"
     environment:
-      - TZ=Europe/Helsinki
+      - TZ=${TZ}
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
