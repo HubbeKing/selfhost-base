@@ -4,19 +4,20 @@ Includes nginx, fail2ban, watchtower, and portainer
 
 ## Setup
 
-Check watchtower config, it's set to update everything at 4AM every day.
+- Check watchtower config, it's set to update everything at 4AM every day.
 
-SSL DH params should be fetched from https://ssl-config.mozilla.org/ffdhe2048.txt
-SSL DH params should be stored in [nginx/config](./nginx/config) folder as `dhparams.pem`
+- SSL DH params should be fetched from https://ssl-config.mozilla.org/ffdhe2048.tx
+- SSL DH params should be stored in [nginx/config](./nginx/config) folder as `dhparams.pem`
 
-See [template.conf](./nginx/sites/template.conf) for Docker site config example
-Wildcard cert for nginx goes into [nginx/ssl](./nginx/ssl) folder.
+- See [template.conf](./nginx/sites/template.conf) for Docker site config example
+
+- Wildcard cert for nginx goes into [nginx/ssl](./nginx/ssl) folder.
     - Cert can be obtained through LetsEncrypt, provided one is using a supported DNS provider.
 
-Relies on externally created `web` docker network - see [docker-compose.yml](./docker-compose.yml)
-Can be created using `docker network create web`
-All sites this backend should proxy to should be attached to the `web` network
-This can be done in several ways:
+- Relies on externally created `web` docker network - see [docker-compose.yml](./docker-compose.yml)
+- Can be created using `docker network create web`
+- All sites this backend should proxy to should be attached to the `web` network
+- This can be done in several ways:
     - setting `networks: default: name: 'web' external: true` in a `docker-compose.yml` file at the top level
     - setting `networks: - web` for each service in a `docker-compose.yml` file
     - Running the docker service using `docker run -d --network="web"` or similar
