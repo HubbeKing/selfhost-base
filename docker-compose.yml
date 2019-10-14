@@ -1,0 +1,48 @@
+version: '3.7'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+    volumes:
+      - ./nginx/log:/var/log/nginx
+      - ./nginx/configs:/configs
+      - ./nginx/ssl:/ssl
+      - ./nginx/sites:/etc/nginx/sites-enabled
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+  portainer:
+    image: portainer/portainer:latest
+    container_name: portainer
+    restart: unless-stopped
+    volumes:
+      - ./portainer:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+  fail2ban:
+    image: crazymax/fail2ban:latest
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    container_name: fail2ban
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - ./nginx/log:/var/log/nginx
+      - ./fail2ban:/data
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    command: --cleanup --schedule "0 0 4 * * *"
+    environment:
+      - TZ=Europe/Helsinki
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  default:
+    external: true
+    name: web
