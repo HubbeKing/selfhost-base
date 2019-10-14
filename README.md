@@ -22,6 +22,7 @@ Includes nginx, fail2ban, watchtower, and portainer
     - setting `networks: - web` for each service in a `docker-compose.yml` file
     - Running the docker service using `docker run -d --network="web"` or similar
 
+- Tweak `Content-Security-Policy` header as needed, it's quite permissive by default - [security.conf](./nginx/configs/security.conf)
 
 ## Usage
 
