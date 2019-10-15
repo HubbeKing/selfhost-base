@@ -1,6 +1,5 @@
 .env
 fail2ban/db/fail2ban.sqlite3
-nginx/configs/dhparam.pem
 nginx/log/*.log
 nginx/log/*.log.*
 nginx/sites/*.conf
