@@ -1,6 +1,12 @@
 # Selfhosting backend for Docker
 
-Includes nginx, fail2ban, watchtower, and portainer
+- Includes nginx, fail2ban, watchtower, and portainer
+- Relies on externally created `web` docker network - see [docker-compose.yml](./docker-compose.yml)
+    - Can be created using `docker network create web`
+- All sites this backend should proxy to should be attached to the `web` network
+    - This can be done in several ways:
+        - setting `networks: default: name: 'web' external: true` in a `docker-compose.yml` file at the top level
+        - Running the docker service using `docker run -d --network="web"` or similar
 
 ## Setup
 
@@ -15,14 +21,6 @@ Includes nginx, fail2ban, watchtower, and portainer
 - See [nginx/templates](./nginx/templates) for Docker site config templates (and also weechat)
     - Configs for individual sites should be in [nginx/sites](./nginx/sites) folder on nginx container startup
     - Config files can be named whatever they wish, but the included [nginx.conf](./nginx/nginx.conf) file only loads `*.conf`
-
-
-- Relies on externally created `web` docker network - see [docker-compose.yml](./docker-compose.yml)
-- Can be created using `docker network create web`
-- All sites this backend should proxy to should be attached to the `web` network
-- This can be done in several ways:
-    - setting `networks: default: name: 'web' external: true` in a `docker-compose.yml` file at the top level
-    - Running the docker service using `docker run -d --network="web"` or similar
 
 ## TL;DR
 
