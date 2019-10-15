@@ -36,3 +36,10 @@
 - Add `Content-Security-Policy` header to each site config, using `add_header Content-Security-Policy` config option
     - This will likely need testing and tweaking to find out what works and what doesn't
     - See https://infosec.mozilla.org/guidelines/web_security#content-security-policy for more information
+
+## Drawbacks
+
+- nginx doesn't natively support healthchecks, so if any service goes down, it doesn't come back
+    - requires a restart of nginx to fix
+    - maybe switch to HAProxy?
+
