@@ -1,4 +1,4 @@
-# Selfhosting backend for Docker
+# Selfhosting reverse-proxy for Docker services
 
 - Includes nginx, fail2ban, watchtower, and portainer
 - Relies on externally created `web` docker network - see [docker-compose.yml](./docker-compose.yml)
@@ -41,5 +41,4 @@
 
 - nginx doesn't natively support healthchecks, so if any service goes down, it doesn't come back
     - requires a restart of nginx to fix
-    - maybe switch to HAProxy?
-
+    - needs a better proxy. HAProxy or Caddy, maybe? Apache would also work, most likely.
