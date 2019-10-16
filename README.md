@@ -26,10 +26,10 @@
 
 - Create an .env file, for TZ env var and other handy things
 - Create docker network using `docker network create web`
-- Get things going with `docker-compose up -d`
 - Get some services up and attached to `web`
 - Create nginx configs for services and store them in [nginx/sites](./nginx/sites) folder
-- Restart nginx with `docker restart nginx`
+    - Note: `portainer` is included in this stack. It also needs a site config. See [nginx/templates](./nginx/templates)
+- Start up nginx and its friends with `docker-compose up -d`
 
 ## Recommendations
 
