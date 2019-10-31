@@ -16,6 +16,10 @@
     - It's easiest to just set up a wildcard A record for your domain
 - Obtain wildcard cert for nginx, put into [nginx/ssl](./nginx/ssl) folder.
     - Cert can be obtained through LetsEncrypt, provided one is using a supported DNS provider.
+    - nginx needs the following certificate files:
+        - `chain.pem`
+        - `fullchain.pem`
+        - `privkey.pem`
 - Check watchtower config, it's set to update everything at 4AM every day.
     - The included [docker-compose.yml](./docker-compose.yml) file uses the TZ environment variable to set the timezone for watchtower
 - See [nginx/templates](./nginx/templates) for Docker site config templates (and also weechat)
