@@ -1,9 +1,9 @@
 # Selfhosting reverse-proxy for Docker services
 
-- Includes nginx, fail2ban, watchtower, and portainer
+- Includes nginx, fail2ban, and watchtower
 - Relies on externally created `web` docker network - see [docker-compose.yml](./docker-compose.yml)
     - Can be created using `docker network create web`
-- All sites this backend should proxy to should be attached to the `web` network
+- All sites this should proxy to should be attached to the `web` network
     - This can be done in several ways:
         - setting `networks: default: name: 'web' external: true` in a `docker-compose.yml` file at the top level
         - Running the docker service using `docker run -d --network="web"` or similar
@@ -32,7 +32,6 @@
 - Create docker network using `docker network create web`
 - Get some services up and attached to `web`
 - Create nginx configs for services and store them in [nginx/sites](./nginx/sites) folder
-    - Note: `portainer` is included in this stack. It also needs a site config. See [nginx/templates](./nginx/templates)
 - Start up nginx and its friends with `docker-compose up -d`
 
 ## Recommendations
